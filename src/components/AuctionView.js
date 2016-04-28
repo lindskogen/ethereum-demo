@@ -1,5 +1,7 @@
 import React from 'react'
 import AccountSelector from './AccountSelector'
+import AuctionInfo from './AuctionInfo'
+import PlaceBid from './PlaceBid'
 
 const formStyle = {
   display: 'flex',
@@ -10,7 +12,7 @@ const formStyle = {
 
 const AuctionView = React.createClass({
   render() {
-    const {auction} = this.props;
+    const { auction } = this.props;
     return (
         <div>
           <AccountSelector />

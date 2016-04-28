@@ -1,6 +1,9 @@
 import web3 from '../web3'
 export const Auction = web3.eth.contract([{"constant":true,"inputs":[],"name":"leadingBid","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[],"name":"leader","outputs":[{"name":"","type":"address"}],"type":"function"},{"constant":false,"inputs":[],"name":"isSeller","outputs":[{"name":"isSeller","type":"bool"}],"type":"function"},{"constant":false,"inputs":[],"name":"returnPrevBid","outputs":[],"type":"function"},{"constant":true,"inputs":[],"name":"winner","outputs":[{"name":"","type":"address"}],"type":"function"},{"constant":false,"inputs":[],"name":"placeBid","outputs":[],"type":"function"},{"constant":true,"inputs":[],"name":"item","outputs":[{"name":"","type":"string"}],"type":"function"},{"constant":false,"inputs":[],"name":"endAuction","outputs":[],"type":"function"},{"inputs":[{"name":"name","type":"string"},{"name":"initialPrice","type":"uint256"}],"type":"constructor"}]);
 
+
+export const getAuction = (address) => Auction.at(address)
+
 export function createAuction(name, price, seller, callback) {
     return Auction.new(
        name,

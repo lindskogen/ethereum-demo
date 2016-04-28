@@ -4,13 +4,15 @@ const PlaceBid = React.createClass({
   render() {
     const {auction} = this.props;
     return (
-      <form onSubmit={this.handleSubmit} style={formStyle}>
+      <form onSubmit={this.handleSubmit}>
         <fieldset>
           <legend>Place new bid</legend>
           <input type="number" ref={(amount) => this.amount = amount} placeholder="Amount" />
-          <button>Place bid>
+          <button>Place bid</button>
         </fieldset>
       </form>
     )
   }
 })
+
+export default PlaceBid

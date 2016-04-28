@@ -7,13 +7,13 @@ const CreateAuction = React.createClass({
     event.preventDefault()
 
     createAuction(this.item.value, parseInt(this.price.value, 10), this.account.value, (err, contract) => {
-        if (err) {
-          console.error(err)
-        } else if (contract.address) {
-          console.log('Contract added', contract);
-        }
+      if (err) {
+        console.error(err)
+      } else if (contract.address) {
+        console.log('Contract added', contract);
+        this.props.setAuction(contract)
       }
-    );
+    });
   },
   render() {
     return (

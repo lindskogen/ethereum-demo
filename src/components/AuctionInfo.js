@@ -8,11 +8,11 @@ const AuctionInfo = React.createClass({
             <dt>Viewing auction:</dt>
             <dd>{auction.address}</dd>
             <dt>Item:</dt>
-            <dd>{auction.item}</dd>
+            <dd>{auction.item()}</dd>
             <dt>Leader:</dt>
-            <dd>{auction.leader}</dd>
+            <dd>{auction.leader()}</dd>
             <dt>Leading bid:</dt>
-            <dt>{auction.leadingBid}</dt>
+            <dt>{auction.leadingBid().toString()}</dt>
           </dl>
     )
   }

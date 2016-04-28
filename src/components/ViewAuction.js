@@ -1,13 +1,18 @@
 import React from 'react';
+import { getAuction } from '../lib/Auction'
 
 const ViewAuction = React.createClass({
   handleSubmit(event) {
     event.preventDefault()
+    const address = this.address.value
 
-    const formFields = {
-      address: this.address.value
-    };
-    console.log(formFields);
+    try {
+      const auction = getAuction(address)
+      const leadingBid = auction.leadingBid();
+      this.props.setAuction(auction)
+    } catch (error) {
+      console.error('Invalid hash:', address)
+    }
   },
   render() {
     return (
