@@ -11,6 +11,9 @@ const AccountSelector = React.createClass({
     const accounts = web3.eth.accounts
 
     this.setState({ accounts });
+    if (!this.props.value && accounts[0]) {
+      this.props.setAccount(accounts[0]);
+    }
   },
   render() {
     const { accounts } = this.state;
