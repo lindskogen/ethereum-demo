@@ -1,13 +1,6 @@
 import React from 'react';
 import web3 from '../web3';
 
-const formStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  width: '40%',
-  maxWidth: 600,
-}
-
 const AccountSelector = React.createClass({
   getInitialState() {
     return {
