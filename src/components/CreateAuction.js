@@ -1,12 +1,13 @@
 import React from 'react';
 import AccountSelector from './AccountSelector'
 import { createAuction } from '../lib/Auction'
+import { toWei } from '../utils/Formater'
 
 const CreateAuction = React.createClass({
   handleSubmit(event) {
     event.preventDefault()
 
-    createAuction(this.item.value, parseInt(this.price.value, 10), this.account.value, (err, contract) => {
+    createAuction(this.item.value, toWei(parseInt(this.price.value, 10)), this.account.value, (err, contract) => {
       if (err) {
         console.error(err)
       } else if (contract.address) {
