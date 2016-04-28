@@ -12,7 +12,7 @@ window.web3 = web3
 const bodyStyle = {
   display: 'flex',
   flexDirection: 'column',
-  width: '40%',
+  width: '80%',
   maxWidth: 600,
 }
 

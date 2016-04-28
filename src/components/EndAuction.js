@@ -1,12 +1,5 @@
 import React from 'react'
 
-const formStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  width: '40%',
-  maxWidth: 600,
-}
-
 const EndAuction = React.createClass({
   handleSubmit(event) {
     event.preventDefault()
@@ -16,7 +9,7 @@ const EndAuction = React.createClass({
   render() {
     const {auction} = this.props;
     return (
-      <form onSubmit={this.handleSubmit} style={formStyle}>
+      <form onSubmit={this.handleSubmit}>
         <fieldset>
           <legend>Auction settings</legend>
           <button>End auction</button>

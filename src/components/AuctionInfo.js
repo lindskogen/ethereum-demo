@@ -1,19 +1,27 @@
 import React from 'react'
 
+const containerStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  margin: '2em 1em',
+  fontFamily: 'monospace'
+}
+
+const rowStyle = {
+  display: 'flex'
+}
+
 const AuctionInfo = React.createClass({
   render() {
-    const {auction} = this.props;
+    const { auction } = this.props;
+
     return (
-          <dl>
-            <dt>Viewing auction:</dt>
-            <dd>{auction.address}</dd>
-            <dt>Item:</dt>
-            <dd>{auction.item()}</dd>
-            <dt>Leader:</dt>
-            <dd>{auction.leader()}</dd>
-            <dt>Leading bid:</dt>
-            <dt>{auction.leadingBid().toString()}</dt>
-          </dl>
+      <div style={containerStyle}>
+        <div style={rowStyle}>Viewing auction: {auction.address}</div>
+        <div style={rowStyle}>Item: {auction.item()}</div>
+        <div style={rowStyle}>Leader: {auction.leader()}</div>
+        <div style={rowStyle}>Leading bid: {auction.leadingBid().toString()}</div>
+      </div>
     )
   }
 })
