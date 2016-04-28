@@ -4,7 +4,7 @@ import { Router, IndexRoute, Route, browserHistory } from 'react-router'
 import web3 from './web3'
 import NewAuction from './components/NewAuction'
 import ShowAuction from './components/ShowAuction'
-import AccountSelector from './components/AccountSelector'
+import AccountView from './components/AccountView'
 
 
 window.web3 = web3
@@ -59,7 +59,7 @@ const App = React.createClass({
 
     return (
       <div style={bodyStyle}>
-        <AccountSelector value={account} setAccount={this.handleSetAccount}/>
+        <AccountView value={account} setAccount={this.handleSetAccount}/>
         {React.cloneElement(this.props.children, {
           style: containerStyle,
           formStyle,
