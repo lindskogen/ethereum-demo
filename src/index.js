@@ -35,14 +35,16 @@ const hrStyle = {
 const App = React.createClass({
   getInitialState() {
     return {
-      currentAuction: null
+      currentAuction: null,
+      account: web3.eth.defaultAccount
     }
   },
   handleSetAccount(account) {
+    web3.eth.defaultAccount = account
+
     this.setState({
       account: account
     });
-    web3.eth.defaultAccount = account
   },
   handleSetAuction(auction) {
     console.log("setAuction", auction);
@@ -57,7 +59,7 @@ const App = React.createClass({
 
     return (
       <div style={bodyStyle}>
-        <AccountSelector setAccount={this.handleSetAccount}/>
+        <AccountSelector value={account} setAccount={this.handleSetAccount}/>
         {React.cloneElement(this.props.children, {
           style: containerStyle,
           formStyle,
