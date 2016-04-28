@@ -2,13 +2,7 @@ import React from 'react'
 import AccountSelector from './AccountSelector'
 import AuctionInfo from './AuctionInfo'
 import PlaceBid from './PlaceBid'
-
-const formStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  width: '40%',
-  maxWidth: 600,
-}
+import EndAuction from './EndAuction'
 
 const AuctionView = React.createClass({
   render() {
@@ -18,6 +12,7 @@ const AuctionView = React.createClass({
           <AccountSelector />
           <AuctionInfo auction={auction} />
           <PlaceBid auction={auction} />
+          {auction.isSeller() && <EndAuction auction={auction} />}
         </div>
     )
   }

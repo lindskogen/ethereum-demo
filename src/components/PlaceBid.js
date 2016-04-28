@@ -6,7 +6,7 @@ const PlaceBid = React.createClass({
     event.preventDefault()
 
     this.props.auction.placeBid({value: web3.toWei(ParseInt(this.amount.value, 10))})
-  }
+  },
   render() {
     const {auction} = this.props;
     return (
