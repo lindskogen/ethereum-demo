@@ -44,6 +44,7 @@ module.exports = {
         colors: true,
         chunks: false
     },
+    historyApiFallback: true
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),

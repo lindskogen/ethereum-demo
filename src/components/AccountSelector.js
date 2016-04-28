@@ -11,7 +11,7 @@ const AccountSelector = React.createClass({
     const accounts = web3.eth.accounts
 
     if (accounts[0]) {
-      this.value = accounts[0]
+      this.props.setAccount(accounts[0])
     }
 
     this.setState({ accounts });
@@ -19,7 +19,7 @@ const AccountSelector = React.createClass({
   render() {
     const { accounts } = this.state;
     return (
-      <select onChange={(event) => this.value = event.target.value}>
+      <select onChange={(event) => this.props.setAccount(event.target.value)}>
         {accounts.map(account => <option key={account}>{account}</option>)}
       </select>
     )

@@ -1,15 +1,28 @@
 import React from 'react'
-import AccountSelector from './AccountSelector'
 import AuctionInfo from './AuctionInfo'
 import PlaceBid from './PlaceBid'
 import EndAuction from './EndAuction'
+import { getAuction } from '../lib/Auction'
 
-const AuctionView = React.createClass({
+const ShowAuction = React.createClass({
+  componentDidMount() {
+    if (!this.props.auction && this.props.params.address) {
+      this.props.setAuction(
+        getAuction(this.props.params.address)
+      );
+    }
+  },
   render() {
     const { auction } = this.props;
+    if (!auction) {
+      return (
+        <div>
+          Loading...
+        </div>
+      )
+    }
     return (
         <div>
-          <AccountSelector />
           <AuctionInfo auction={auction} />
           <PlaceBid auction={auction} />
           {auction.isSeller() && <EndAuction auction={auction} />}
@@ -18,4 +31,4 @@ const AuctionView = React.createClass({
   }
 })
 
-export default AuctionView
+export default ShowAuction

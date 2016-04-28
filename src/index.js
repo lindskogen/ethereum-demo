@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
-import ReactRouter from 'react-router'
+import { Router, IndexRoute, Route, browserHistory } from 'react-router'
 import web3 from './web3'
-import CreateAuction from './components/CreateAuction'
-import AuctionView from './components/AuctionView'
-import ViewAuction from './components/ViewAuction'
+import NewAuction from './components/NewAuction'
+import ShowAuction from './components/ShowAuction'
+import AccountSelector from './components/AccountSelector'
+
 
 window.web3 = web3
 
@@ -13,6 +14,11 @@ const bodyStyle = {
   flexDirection: 'column',
   width: '40%',
   maxWidth: 600,
+}
+
+const containerStyle = {
+  display: 'flex',
+  flexDirection: 'column',
 }
 
 const formStyle = {
@@ -32,31 +38,51 @@ const App = React.createClass({
       currentAuction: null
     }
   },
+  handleSetAccount(account) {
+    this.setState({
+      account: account
+    });
+    web3.eth.defaultAccount = account
+  },
   handleSetAuction(auction) {
     console.log("setAuction", auction);
     this.setState({
       currentAuction: auction
+    }, () => {
+      browserHistory.push('/show/' + auction.address)
     });
   },
   render() {
-    const { currentAuction } = this.state;
+    const { currentAuction, account } = this.state;
 
-    return (!currentAuction) ? (
+    return (
       <div style={bodyStyle}>
-        <CreateAuction style={formStyle} setAuction={this.handleSetAuction}/>
-        <hr style={hrStyle}/>
-        <ViewAuction style={formStyle} setAuction={this.handleSetAuction}/>
-      </div>
-    ) : (
-      <div style={bodyStyle}>
-        <AuctionView auction={currentAuction}/>
+        <AccountSelector setAccount={this.handleSetAccount}/>
+        {React.cloneElement(this.props.children, {
+          style: containerStyle,
+          formStyle,
+          account,
+          setAuction: this.handleSetAuction,
+          auction: currentAuction
+        })}
       </div>
     )
   }
 })
 
 
+const AppRouter = () => (
+  <Router history={browserHistory}>
+    <Route path="/" component={App}>
+      <Route path="new" component={NewAuction} />
+      <Route path="show/:address" component={ShowAuction} />
+      <IndexRoute component={NewAuction} />
+    </Route>
+  </Router>
+)
+
+
 ReactDOM.render(
-  <App/>,
+  <AppRouter/>,
   document.getElementById('root')
 )

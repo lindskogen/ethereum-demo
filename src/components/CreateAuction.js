@@ -7,7 +7,7 @@ const CreateAuction = React.createClass({
   handleSubmit(event) {
     event.preventDefault()
 
-    createAuction(this.item.value, toWei(parseInt(this.price.value, 10)), this.account.value, (err, contract) => {
+    createAuction(this.item.value, toWei(parseInt(this.price.value, 10)), this.props.account, (err, contract) => {
       if (err) {
         console.error(err)
       } else if (contract.address) {
@@ -19,7 +19,6 @@ const CreateAuction = React.createClass({
   render() {
     return (
       <form onSubmit={this.handleSubmit} style={this.props.style}>
-        <AccountSelector ref={(account) => this.account = account} />
         <input type="text" ref={(item) => this.item = item} placeholder="Item" />
         <input type="number" ref={(price) => this.price = price} placeholder="Price" />
         <button>Create Auction</button>
