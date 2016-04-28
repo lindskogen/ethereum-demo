@@ -17,7 +17,8 @@ const AuctionView = React.createClass({
           <AuctionInfo auction={auction} />
           <PlaceBid auction={auction} />
         </div>
-    }
+    )
+  }
 })
 
 export default AuctionView
