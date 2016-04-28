@@ -1,11 +1,11 @@
 import React from 'react'
-import { toWei } from '../utils/Formater'
+import web3 from '../web3'
 
 const PlaceBid = React.createClass({
   handleSubmit(event) {
     event.preventDefault()
 
-    this.props.auction.placeBid({value: toWei(ParseInt(this.amount.value, 10))})
+    this.props.auction.placeBid({value: web3.toWei(parseFloat(this.amount.value, 10))})
   },
   render() {
     const {auction} = this.props;
@@ -13,7 +13,7 @@ const PlaceBid = React.createClass({
       <form onSubmit={this.handleSubmit}>
         <fieldset>
           <legend>Place new bid</legend>
-          <input type="number" ref={(amount) => this.amount = amount} placeholder="Amount" />
+          <input type="number" ref={(amount) => this.amount = amount} placeholder="Amount (in ether)" />
           <button>Place bid</button>
         </fieldset>
       </form>

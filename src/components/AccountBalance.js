@@ -1,11 +1,13 @@
 import React from 'react'
 import web3 from '../web3'
+import { fromWei } from '../utils/Formater'
 
 const AccountBalance = React.createClass({
   render() {
-    var balance = web3.fromWei(web3.eth.getBalance(web3.eth.defaultAccount))
+    const balance = web3.eth.getBalance(this.props.account);
+
     return (
-      <span>Balance: {balance.toString()} ether</span>
+      <span>Balance: {fromWei(balance)} ether</span>
     )
   }
 })

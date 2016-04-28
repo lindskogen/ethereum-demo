@@ -59,7 +59,7 @@ const App = React.createClass({
 
     return (
       <div style={bodyStyle}>
-        <AccountView value={account} setAccount={this.handleSetAccount}/>
+        <AccountView account={account} setAccount={this.handleSetAccount}/>
         {React.cloneElement(this.props.children, {
           style: containerStyle,
           formStyle,
