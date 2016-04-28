@@ -4,8 +4,8 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: [
-    './src/index',
-    'webpack/hot/dev-server'
+    'webpack/hot/only-dev-server',
+    './src/index'
   ],
   devtool: 'source-map',
   output: {
@@ -20,7 +20,7 @@ module.exports = {
       },
       {
         test: /(\.jsx|\.js)$/,
-        loader: 'babel',
+        loaders: ['react-hot', 'babel'],
         exclude: /(node_modules|bower_components)/
       },
       {
