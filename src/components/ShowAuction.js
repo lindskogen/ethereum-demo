@@ -25,7 +25,7 @@ const ShowAuction = React.createClass({
         <div>
           <AuctionInfo auction={auction} />
           <PlaceBid auction={auction} />
-          {auction.isSeller() && <EndAuction auction={auction} />}
+          {auction.isSeller.call() && <EndAuction auction={auction} />}
         </div>
     )
   }
