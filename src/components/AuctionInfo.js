@@ -1,4 +1,5 @@
 import React from 'react'
+import { fromWei } from '../utils/Formater'
 
 const containerStyle = {
   display: 'flex',
@@ -20,7 +21,7 @@ const AuctionInfo = React.createClass({
         <div style={rowStyle}>Viewing auction: {auction.address}</div>
         <div style={rowStyle}>Item: {auction.item()}</div>
         <div style={rowStyle}>Leader: {auction.leader()}</div>
-        <div style={rowStyle}>Leading bid: {auction.leadingBid().toString()}</div>
+        <div style={rowStyle}>Leading bid: {fromWei(auction.leadingBid())} Ether</div>
       </div>
     )
   }
