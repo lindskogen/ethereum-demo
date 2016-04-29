@@ -10,7 +10,7 @@ const AccountSelector = React.createClass({
   componentWillMount() {
     const accounts = web3.eth.accounts
 
-    if (!this.props.value && accounts && accounts[0]) {
+    if (!this.props.account && accounts && accounts[0]) {
       this.setState({ accounts });
       this.props.setAccount(accounts[0]);
     }
