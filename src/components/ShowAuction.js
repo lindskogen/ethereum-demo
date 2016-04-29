@@ -6,9 +6,9 @@ import { getAuction } from '../lib/Auction'
 
 const ShowAuction = React.createClass({
   componentDidMount() {
-    if (!this.props.auction && this.props.params.address) {
+    if (!this.props.auction && this.props.address) {
       this.props.setAuction(
-        getAuction(this.props.params.address)
+        getAuction(this.props.address)
       );
     }
   },
