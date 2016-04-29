@@ -20,8 +20,10 @@ const AuctionInfo = React.createClass({
       <div style={containerStyle}>
         <div style={rowStyle}>Viewing auction: {auction.address}</div>
         <div style={rowStyle}>Item: {auction.item()}</div>
-        <div style={rowStyle}>Leader: {auction.leader()}</div>
-        <div style={rowStyle}>Leading bid: {fromWei(auction.leadingBid())} Ether</div>
+        {auction.winner() == 0 && <div style={rowStyle}>Leader: {auction.leader()}</div>}
+        {auction.winner() == 0 && <div style={rowStyle}>Leading bid: {fromWei(auction.leadingBid())} Ether</div>}
+        {auction.winner() != 0 && <div style={rowStyle}>Winner: {auction.winner()}</div>}
+        {auction.winner() != 0 && <div style={rowStyle}>Wining bid: {fromWei(auction.leadingBid())} Ether</div>}
       </div>
     )
   }

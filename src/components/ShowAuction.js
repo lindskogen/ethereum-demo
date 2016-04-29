@@ -21,11 +21,12 @@ const ShowAuction = React.createClass({
         </div>
       )
     }
+    var isActive = auction.winner() == 0
     return (
         <div>
           <AuctionInfo auction={auction} />
-          <PlaceBid auction={auction} />
-          {auction.isSeller.call() && <EndAuction auction={auction} />}
+          {isActive && <PlaceBid auction={auction} />}
+          {isActive && auction.isSeller.call() && <EndAuction auction={auction} />}
         </div>
     )
   }
