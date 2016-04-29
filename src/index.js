@@ -5,6 +5,7 @@ import web3 from './web3'
 import NewAuction from './components/NewAuction'
 import ShowAuction from './components/ShowAuction'
 import AccountView from './components/AccountView'
+import Wallet from './components/Wallet'
 
 
 window.web3 = web3
@@ -79,6 +80,7 @@ const AppRouter = () => (
     <Route path="/" component={App}>
       <Route path="new" component={NewAuction} />
       <Route path="show/:address" component={ShowAuction} />
+      <Route path="wallet" component={Wallet} />
       <IndexRoute component={NewAuction} />
     </Route>
   </Router>
