@@ -11,7 +11,7 @@ const Wallet = React.createClass({
     return (
         <div>
           <div>
-            <div>My addresss: {web3.eth.defaultAccount}</div>
+            <div>My address: {this.props.account}</div>
           </div>
           <form onSubmit={this.handleSubmit}>
             <fieldset>

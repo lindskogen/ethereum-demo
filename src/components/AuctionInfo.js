@@ -1,5 +1,5 @@
 import React from 'react'
-import { fromWei } from '../utils/Formater'
+import { fromWei } from '../utils/Formatter'
 
 const containerStyle = {
   display: 'flex',

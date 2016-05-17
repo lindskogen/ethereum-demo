@@ -1,6 +1,6 @@
 import React from 'react'
 import web3 from '../web3'
-import { fromWei } from '../utils/Formater'
+import { fromWei } from '../utils/Formatter'
 
 const AccountBalance = React.createClass({
   render() {

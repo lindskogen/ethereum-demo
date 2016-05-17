@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
-import { Router, IndexRoute, Route, browserHistory } from 'react-router'
+import { Router, IndexRoute, Link, Route, browserHistory } from 'react-router'
 import web3 from './web3'
 import NewAuction from './components/NewAuction'
 import ShowAuction from './components/ShowAuction'
@@ -15,6 +15,11 @@ const bodyStyle = {
   flexDirection: 'column',
   width: '80%',
   maxWidth: 600,
+}
+
+const linkStyles = {
+  display: 'flex',
+  justifyContent: 'space-between'
 }
 
 const containerStyle = {
@@ -69,6 +74,10 @@ const App = React.createClass({
           setAuction: this.handleSetAuction,
           auction: currentAuction
         })}
+        <div style={linkStyles}>
+          <Link to="/new">Home</Link>
+          <Link to="/wallet">Wallet</Link>
+        </div>
       </div>
     )
   }
